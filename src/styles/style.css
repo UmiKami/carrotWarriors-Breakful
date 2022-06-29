@@ -1,0 +1,13 @@
+/* ↓↓↓Every style has to have the :global attribute↓↓↓ */
+/*
+:global .mainContainer{
+    width: 400px;
+    background-color: black;
+    color: orangered;
+}
+
+:global .button{
+    background-color: pink;
+}
+*/
+/* ↑↑↑Every style has to have the :global attribute↑↑↑ */
