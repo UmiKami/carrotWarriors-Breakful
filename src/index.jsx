@@ -7,7 +7,7 @@ require("./styles/style.css");
 const Index = () => {
   return (
     <div className="mainContainer">
-      
+      <h1>hello world</h1>
     </div>
   );
 };
