@@ -1,7 +1,14 @@
+import "./style/sass/App.scss";
+import LandingPage from "./Components/LandingPage";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <div id="content-wrap">
+
+        <LandingPage />
+
+      </div>
     </div>
   );
 }
