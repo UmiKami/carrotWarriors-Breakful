@@ -11,3 +11,46 @@
 }
 */
 /* ↑↑↑Every style has to have the :global attribute↑↑↑ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:global .mainContainer{
+    width: 750px;
+    height: 550px;
+    background-color: #629EA0;
+    color: white;
+    font-family: 'Inter';
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+:global .pageTitle{
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: lighter;
+}
+
+:global .time{
+    font-family: inherit;
+    font-weight: 400;
+
+}
+
+:global .endBreakBtn{
+    margin-top: 40px;
+    width: 198px;
+    height: 38px;
+    font-family: inherit;
+
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+}
