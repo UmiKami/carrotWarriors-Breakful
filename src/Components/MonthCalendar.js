@@ -4,12 +4,12 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import calendarAc
+import { calendarActions } from "../store/calendar";
 
 const MonthCalendar = () => {
   const [calendarVal, setCalendarVal] = useState({});
   const dispatch = useDispatch();
-	dispatch(calend)
+	dispatch(calendarActions.setSelectedDate(calendarVal))
 
   return (
     <>
