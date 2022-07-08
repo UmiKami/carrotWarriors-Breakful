@@ -1,6 +1,6 @@
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { TextField } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers";
+import { StaticDatePicker } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -14,8 +14,9 @@ const MonthCalendar = () => {
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker
-          label="Breaks Calendar"
+        <StaticDatePicker
+          label="Date"
+          showToolbar={false}
           value={calendarVal}
           onChange={(val) => {
             setCalendarVal(val);
