@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import LPimage from "../assets/LPimage.png";
 import { authActions } from "../store/auth";
 
 const LandingPage = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleSignUp = () => {
         dispatch(authActions.signup())
     }
 
     return (
-        <main> 
+        <main id="content-wrapper"> 
 
             <div className="main-container">
 
@@ -31,7 +33,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className="sign-up-container">
-                    {!isLoggedIn ? <button onClick={handleSignUp}>Sign up with Google Account</button> : <h3>Welcome back!</h3>}
+                    {!isLoggedIn ? <button onClick={handleSignUp}>Sign up with Google Account</button> : navigate(`/dashboard`)}
                 </div>
 
             </div>
