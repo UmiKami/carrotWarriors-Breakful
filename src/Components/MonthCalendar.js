@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { TextField } from "@mui/material";
 import { StaticDatePicker } from "@mui/x-date-pickers";
@@ -40,6 +41,7 @@ const MonthCalendar = () => {
 
   return (
     <>
+      <h1>Date</h1>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
           <StaticDatePicker
