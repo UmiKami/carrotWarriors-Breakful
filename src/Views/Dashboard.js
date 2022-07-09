@@ -1,4 +1,5 @@
 import MonthCalendar from "../Components/MonthCalendar";
+import EventCalendar from "../Components/EventCalendar";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
@@ -11,9 +12,9 @@ const Dashboard = () => {
     {
       isLoggedIn ? (
           <>
-            <h1>You are in the dashboard!!</h1>
             <div className="calendar-wrapper">
 		          <MonthCalendar/>
+              <EventCalendar/>
             </div>
           </>
       ) : (<h1>You are not logged in</h1>)
