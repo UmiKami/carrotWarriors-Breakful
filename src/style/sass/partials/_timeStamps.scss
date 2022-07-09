@@ -1,0 +1,20 @@
+h1 {
+    font-size: 20px;
+}
+
+
+.timeSlots {
+    overflow: auto;
+
+    button {
+    width: 120px;
+    background-color: white;
+    color: $darkGreen;
+    border: 1px solid $mediumGreen;
+    &:hover,
+    &:focus {
+        background-color: $darkGreen;
+    }
+}
+
+}

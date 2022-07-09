@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./style/sass/App.scss";
 import Dashboard from "./Views/Dashboard";
