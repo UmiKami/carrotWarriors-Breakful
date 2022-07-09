@@ -1,8 +1,10 @@
 import React, { Component }  from 'react';
+import { Link } from 'react-router-dom';
 
 const TimeStamps = () => {
     return (
     <>
+        
         <div className='timeSlots'>
             <h1>Time</h1>
 
@@ -20,9 +22,9 @@ const TimeStamps = () => {
             <button>8:00 PM</button>
             <button>9:30 PM</button>
             <button>10:30 PM</button>
-            <button>CONFIRM</button>
 
-        </div>        
+        </div>  
+
     </>
 
     )};
