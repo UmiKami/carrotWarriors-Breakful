@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import MonthCalendar from "../Components/MonthCalendar";
-import EventCalendar from "../Components/EventCalendar";
 import { useSelector } from "react-redux";
 import TimeStamps from "../Components/TimeStamps";
+import EventCalendar from '../Components/EventCalendar';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fa } from '@fortawesome/free-solid-svg-icons'
@@ -24,6 +24,7 @@ const Dashboard = () => {
               <div className='dashboardRow'>
                 <MonthCalendar/>
                 <TimeStamps />
+                <EventCalendar/>
               </div>
 
             </div>

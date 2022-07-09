@@ -5,6 +5,7 @@ nav {
 .dashboardRow {
     display: flex;
     flex-direction: row;
+    gap: 50px;
 }
 
 h1 {
@@ -13,7 +14,7 @@ font-size: 20px;
 
 
 .timeSlots {
-    overflow: auto;
+    overflow: hidden;
     width: 240px;
     height: 650px;
     padding: 20px;
