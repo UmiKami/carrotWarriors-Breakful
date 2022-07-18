@@ -4,9 +4,6 @@ import { useSelector } from "react-redux";
 import TimeStamps from "../Components/TimeStamps";
 import EventCalendar from '../Components/EventCalendar';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fa } from '@fortawesome/free-solid-svg-icons'
-
 
 const Dashboard = () => {
   const selectedDate = useSelector((state) => state.calendar.selectedDate);
@@ -21,7 +18,8 @@ const Dashboard = () => {
 
             <div className="calendar-wrapper">
 
-              <div className='dashboardRow'>
+              <div className='dashboardRow'> 
+              
                 <MonthCalendar/>
                 <TimeStamps />
                 <EventCalendar/>

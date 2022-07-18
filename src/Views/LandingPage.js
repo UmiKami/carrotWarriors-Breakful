@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import LPimage from "../assets/LPimage.png";
 import { authActions } from "../store/auth";
+// import SignUp from "../Components/SignUp";
 
 const LandingPage = () => {
     const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
@@ -28,12 +29,12 @@ const LandingPage = () => {
                         <li>Easily schedule breaks based on your Google Calendar</li>
                         <li>Feel free to choose your breaks duration and content</li>
                     </ul>
-                    
 
                 </div>
+                {/* <SignUp /> */}
 
                 <div className="sign-up-container">
-                    {!isLoggedIn ? <button onClick={handleSignUp}>Sign up with Google Account</button> : navigate(`/dashboard`)}
+                    {/* {!isLoggedIn ? <button onClick={handleSignUp}>Sign up with Google Account</button> : navigate(`/dashboard`)} */}
                 </div>
 
             </div>
