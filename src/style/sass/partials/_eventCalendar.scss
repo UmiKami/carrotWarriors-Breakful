@@ -7,13 +7,12 @@
 .eventCal{
     font-family: 'Inter';
     overflow-y: hidden;
-
+    width: 50rem;
 
     &__timeStamp{
         position: relative;
-        width: 560px;
+        width: 100%;
         padding: 1.8rem 0px;
-
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
@@ -24,7 +23,7 @@
 
         &-timeOutline{
             display: inline-block;
-            width: 500px;
+            width: 90%;
             height: 1px;
             background-color: #CACACA;
         }
@@ -36,7 +35,7 @@
             justify-content: center;
             align-items: flex-start;
 
-            width: 500px;
+            width: 90%;
             z-index: 100;
             padding: 20px 20px;
             line-height: 18px;
