@@ -14,10 +14,10 @@ font-size: 20px;
 
 
 .timeSlots {
-    overflow: hidden;
     width: 240px;
     height: 650px;
     padding: 20px;
+    overflow-y: scroll;
 }
 
 button {
@@ -31,6 +31,7 @@ button {
     margin-bottom: 20px;
     &:hover,
     &:focus {
+        cursor: pointer;
         background-color: $darkGreen;
         color: white;
     }
