@@ -9,53 +9,74 @@ nav {
 }
 
 h1 {
-font-size: 20px;
+    font-size: 20px;
 }
 
+.dateTime-header{
+    font-size: 16px;
+}
 
 .timeSlots {
     width: 240px;
     height: 650px;
     padding: 20px;
-    overflow-y: scroll;
-}
+    margin-top: 4px;
+    // overflow-y: scroll;
 
-button {
-    font-size: 1rem;
-    width: 180px;
-    height: 40px;
-    background-color: white;
-    color: $darkGreen;
-    border: 1px solid $mediumGreen;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    &:hover,
-    &:focus {
-        cursor: pointer;
+    button{
+        font-size: 1rem;
+        width: 180px;
+        height: 40px;
+        background-color: white;
+        color: $darkGreen;
+        border: 1px solid $mediumGreen;
+        border-radius: 5px;
+        margin-bottom: 20px;
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            background-color: $darkGreen;
+            color: white;
+        }
+
+        .confirm {
+            background-color: $darkGreen;
+            color: white;
+
+            &:hover,
+            &:focus {
+                background-color: white;
+                color: $darkGreen;
+            }
+        }
+    }
+
+    &__buttons {
+        height: 100%;
+        overflow-y: scroll;
+        transition: background-color 1s ease;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(217, 217, 217);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $darkGreen;
+        }
+    }
+
+    .confirm {
+        margin-top: 20px;
         background-color: $darkGreen;
         color: white;
     }
-    
-    .confirm {
-    margin-top: 20px;
-    background-color: $darkGreen;
-    color: white;
-    &:hover,
-    &:focus {
-        background-color: white;
-        color: $darkGreen;
-        }
-    }
 }
-
-    // .confirm {
-    // margin-top: 20px;
-    // background-color: $darkGreen;
-    // color: white;
-    // &:hover,
-    // &:focus {
-    //     background-color: white;
-    //     color: $darkGreen;
-    //     }
-    // }
-
