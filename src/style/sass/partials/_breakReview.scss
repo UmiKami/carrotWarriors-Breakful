@@ -1,0 +1,113 @@
+.breakRev {
+    width: 50rem;
+    // background-color: rgba($color: #000000, $alpha: 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__heroSection {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 60%;
+        width: 75%;
+
+        &-header {
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        &-specialHeader {
+            font-weight: 600;
+            color: $darkGreen;
+        }
+
+        &-img {
+            position: absolute;
+            width: 100%;
+            z-index: -10;
+        }
+    }
+
+    .btn {
+        font-size: 1rem;
+        width: 180px;
+        height: 40px;
+        background-color: white;
+        color: $darkGreen;
+        border: 1px solid $mediumGreen;
+        border-radius: 5px;
+        margin-bottom: 20px;
+
+    }
+
+    &__actionBtn {
+        display: flex;
+        margin-bottom: -70px;
+        gap: 0px 40px;
+
+        &-returnBtn {
+            display: inline-block;
+            background-color: #f0f0f0 !important;
+            border: none !important;
+            margin-bottom: 0 !important;
+            transition: all 0.2s ease;
+        }
+
+
+        &-promptBtn {
+            display: inline-block;
+            background-color: $darkGreen !important;
+            color: white !important;
+            margin-bottom: 0 !important;
+            transition: all 0.2s ease;
+        }
+
+        &-promptBtn:hover {
+            background-color: white !important;
+            color: $darkGreen !important;
+        }
+
+        &-returnBtn:hover,
+        &-promptBtn:hover {
+            transition: all 0.2s ease-out;
+            transform: translateY(-5px);
+        }
+    }
+
+    &__goHome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        &-header {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: $darkGreen !important;
+            font-weight: 600;
+        }
+
+        &-text {
+            font-weight: 400;
+            width: 350px;
+        }
+
+        &-homeBtn {
+            margin-top: 35px;
+            background-color: $darkGreen !important;
+            color: white !important;
+            margin-bottom: 0 !important;
+            transition: all 0.2s ease;
+        }
+
+        &-homeBtn:hover {
+            background-color: white !important;
+            color: $darkGreen !important;
+        }
+    }
+}
