@@ -1,17 +1,18 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import MonthCalendar from "../Components/MonthCalendar";
 import { useSelector } from "react-redux";
 import TimeStamps from "../Components/TimeStamps";
 import EventCalendar from '../Components/EventCalendar';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fa } from '@fortawesome/free-solid-svg-icons'
+import BreakOptions from '../Components/BreakOptions';
+import BreakReview from '../Components/BreakReview';
+import { Link } from 'react-router-dom';
 
 
 const Dashboard = () => {
-  const selectedDate = useSelector((state) => state.calendar.selectedDate);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
-  console.log(selectedDate);
+  // const selectedDate = useSelector((state) => state.calendar.selectedDate);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const isDateTimeConfirmed = useSelector(state=> state.dashboard.isDateTimeConfirmed);
+  const isTypeDurationConfirmed = useSelector(state=>state.dashboard.isTypeDurationConfirmed);
 
   return (
     <>
@@ -22,14 +23,29 @@ const Dashboard = () => {
             <div className="calendar-wrapper">
 
               <div className='dashboardRow'>
-                <MonthCalendar/>
-                <TimeStamps />
+                
+                {
+                  !isDateTimeConfirmed ? (
+                    <>
+                      <MonthCalendar/>
+                      <TimeStamps />
+                    </>
+                  ) : !isTypeDurationConfirmed ? (
+                    <BreakOptions />
+                  ) : (
+                    <BreakReview/>
+                  )
+                }
                 <EventCalendar/>
               </div>
 
             </div>
           </>
-      ) : (<h1>You are not logged in</h1>)
+      ) : (<>
+            <h1>You are not logged in</h1>
+            <Link to="/">Go home</Link>
+          </>
+      )
     }
 
     

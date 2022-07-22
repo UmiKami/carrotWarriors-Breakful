@@ -1,16 +1,22 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// const calendarSlice = createSlice({
-//   name: "dashboard",
-//   initialState: {
-//     selectedDate: {},
-//   },
-//   reducers: {
-//     setSelectedDate(state, action) {
-//       state.selectedDate = action.payload;
-//     },
-//   },
-// });
+const dashboardSlice = createSlice({
+  name: "dashboard",
+  initialState: {
+    isDateTimeConfirmed: false,
+    isTypeDurationConfirmed: false,
+  },
+  reducers: {
+    setDateTimeConfirmed(state, action){
+        state.isDateTimeConfirmed = action.payload;
+    },
+    setTypeDurationConfirmed(state, action){
+        if(state.isDateTimeConfirmed){
+            state.isTypeDurationConfirmed = action.payload;
+        }
+    }
+  },
+});
 
-// export const calendarActions = calendarSlice.actions;
-// export default calendarSlice;
+export const dashboardActions = dashboardSlice.actions;
+export default dashboardSlice;
