@@ -1,64 +1,51 @@
-import React, { Component }  from 'react';
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { TextField } from "@mui/material";
-import { StaticDatePicker } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { calendarActions } from "../store/calendar";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import { createMuiTheme } from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/styles"
+import DateFnsUtils from "@date-io/date-fns";
 
-const theme = createTheme({
-  palette: {
-    text: {
-      primary:'#436E70',
-      secondary: '#B5BEC6',
-      disabled: '#D0EDED'
+const calendarTheme = createMuiTheme({
+    overrides: {
+        MuiPickersDay: {
+            day: {
+                color: "#436E70",
+            },
+            daySelected: {
+                backgroundColor: "#436E70",
+            },
+            dayDisabled: {
+                color: "#436E70",
+            },
+            current: {
+                color: "#436E70",
+            },
+        },
     },
-    primary: {
-      main: '#436E70',
-      light: '#629EA0'
-    },
-    action:{
-      active: '#436E70',
-      selected:'#436E70',
-      focus: '#436E70'
-    }
-  },
-  typography: {
-    fontFamily: 'Inter',
-    fontSize: 18,
-    button:{
-      fontWeight: "600 !important"
-    }
-  }
-})
+});
 
 const MonthCalendar = () => {
   const [calendarVal, setCalendarVal] = useState({});
+  const [selectedDate, handleDateChange] = useState(new Date());
   const dispatch = useDispatch();
   dispatch(calendarActions.setSelectedDate(calendarVal))
 
   return (
-    <>
-      <h1>Date</h1>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <ThemeProvider theme={theme}>
-          <StaticDatePicker
-            className="calendar"
-            label="Date"
-            showToolbar={false}
-            value={calendarVal}
-            onChange={(val) => {
-              setCalendarVal(val);
-            }}
-            disablePast={true}
-            disableMaskedInput={true}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </ThemeProvider>
-      </LocalizationProvider>
-    </>
+      <div className="d-flex flex-column">
+          <h1 className="dateTime-header mt-4">Date</h1>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <ThemeProvider theme={calendarTheme}>
+              <DatePicker 
+                value={selectedDate} 
+                onChange={handleDateChange}
+                disablePast
+                variant="static" 
+                disableToolbar/>
+            </ThemeProvider>
+          </MuiPickersUtilsProvider>
+      </div>
   );
 };
 
