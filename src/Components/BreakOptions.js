@@ -1,6 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { dashboardActions } from "../store/dashboard";
 
 const BreakOptions = () => {
+    const dispatch = useDispatch();
+
+    const returnToDateTime = () => {
+        dispatch(dashboardActions.setDateTimeConfirmed(false))
+    }
+
+    const confirmBreak = () => {
+        dispatch(dashboardActions.setTypeDurationConfirmed(true))
+    }
+
     return (
         <section className="breakOpt">
             <div className="breakOpt__typeDuration">
@@ -53,8 +65,8 @@ const BreakOptions = () => {
                 </div>
 
                 <div className="breakOpt__actionBtn">
-                    <button className="breakOpt__returnBtn">Return</button>
-                    <button className="breakOpt__confirmBtn">Confirm</button>
+                    <button className="breakOpt__returnBtn" onClick={returnToDateTime}>Return</button>
+                    <button className="breakOpt__confirmBtn" onClick={confirmBreak}>Confirm</button>
                 </div>
             </div>
         </section>

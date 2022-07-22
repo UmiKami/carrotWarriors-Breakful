@@ -1,20 +1,20 @@
-.breakOpt{
+.breakOpt {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50rem;
     // background-color: rgba($color: #000000, $alpha: 0.1);
 
-    &__header{
+    &__header {
         font-size: 16px;
     }
 
-    &__wrapper{
+    &__wrapper {
         display: flex;
-        margin-bottom: 10rem;
+        margin-bottom: 14rem;
     }
 
-    &__typeDuration{
+    &__typeDuration {
         min-height: 100%;
         width: 80%;
         display: flex;
@@ -22,82 +22,114 @@
         justify-content: space-evenly;
         // background-color: rgba($color: #c00000, $alpha: 0.1);
 
-        &-type, &-time{
+        button {
+            font-size: 1rem;
+            height: 40px;
+            background-color: white;
+            color: $darkGreen;
+            border: 1px solid $mediumGreen;
+            border-radius: 5px;
+            margin-bottom: 20px;
+
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                background-color: $darkGreen;
+                color: white;
+            }
+
+            .confirm {
+                margin-top: 20px;
+                background-color: $darkGreen;
+                color: white;
+
+                &:hover,
+                &:focus {
+                    background-color: white;
+                    color: $darkGreen;
+                }
+            }
+        }
+
+        &-type,
+        &-time {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 50%;
         }
 
-
-        &-typeHeader{
+        &-typeHeader {
             font-size: 16px;
             width: 70%;
             text-align: center;
         }
 
-        &-timeHeader{
+        &-timeHeader {
             font-size: inherit;
             text-align: center;
             width: 80%;
         }
 
-        &-typeBtn{
+        &-typeBtn {
             font-size: inherit;
             width: 100%;
             animation-name: render_typeBtn;
             animation-duration: 1s;
         }
 
-        &-time{
+        &-time {
             align-items: flex-end;
         }
 
-        &-timeBtn{
+        &-timeBtn {
             font-size: inherit;
             width: 80%;
             animation-name: render_timeBtn;
             animation-duration: 1s;
         }
 
-        &-customTime{
+        &-customTime {
             outline: none;
-
         }
 
-        &-typeBtn, &-timeBtn {
-            transition: all 200ms ease;
+        &-typeBtn,
+        &-timeBtn {
+            transition: all 0.2s ease;
         }
     }
 
-    &__actionBtn{
+    &__actionBtn {
         align-self: flex-end;
         margin-top: 3rem;
         width: 30rem;
-        
+
         display: flex;
         justify-content: space-around;
     }
 
-    &__returnBtn, &__confirmBtn{
+    &__returnBtn,
+    &__confirmBtn {
         width: 40%;
     }
 }
 
-@keyframes render_timeBtn{
-    from{
+@keyframes render_timeBtn {
+    from {
         width: 0;
         opacity: 0;
-    }to{
+    }
+    to {
         width: 80%;
         opacity: 1;
     }
 }
-@keyframes render_typeBtn{
-    from{
+@keyframes render_typeBtn {
+    from {
         width: 0;
         opacity: 0;
-    }to{
+    }
+    to {
         width: 100%;
         opacity: 1;
     }
