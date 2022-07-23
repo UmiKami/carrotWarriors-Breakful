@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MonthCalendar from "../Components/MonthCalendar";
 import { useSelector } from "react-redux";
 import TimeStamps from "../Components/TimeStamps";
@@ -6,6 +6,8 @@ import EventCalendar from '../Components/EventCalendar';
 import BreakOptions from '../Components/BreakOptions';
 import BreakReview from '../Components/BreakReview';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/auth';
 
 
 const Dashboard = () => {
@@ -13,6 +15,16 @@ const Dashboard = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const isDateTimeConfirmed = useSelector(state=> state.dashboard.isDateTimeConfirmed);
   const isTypeDurationConfirmed = useSelector(state=>state.dashboard.isTypeDurationConfirmed);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('access_token') == undefined){
+      dispatch(authActions.signOut())
+    } else {
+      dispatch(authActions.signIn())
+    }
+  });
 
   return (
     <>
