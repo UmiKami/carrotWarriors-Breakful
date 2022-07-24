@@ -8,7 +8,6 @@ import EventCalendar from '../Components/EventCalendar';
 import BreakOptions from '../Components/BreakOptions';
 import BreakReview from '../Components/BreakReview';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { authActions } from '../store/auth';
 
 
