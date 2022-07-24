@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import Nav from "../Components/Navbar";
+import SubNavbar from "../Components/SubNavbar";
 import MonthCalendar from "../Components/MonthCalendar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TimeStamps from "../Components/TimeStamps";
 import EventCalendar from '../Components/EventCalendar';
 import BreakOptions from '../Components/BreakOptions';
@@ -15,6 +17,8 @@ const Dashboard = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const isDateTimeConfirmed = useSelector(state=> state.dashboard.isDateTimeConfirmed);
   const isTypeDurationConfirmed = useSelector(state=>state.dashboard.isTypeDurationConfirmed);
+  const throwAlert = useSelector((state) => state.dashboard.throwAlert)
+  
   //const totalHours = Array.from(Array(24).keys());
   const totalHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
@@ -33,7 +37,10 @@ const Dashboard = () => {
     {
       isLoggedIn ? (
           <>
-
+            <Nav />
+            <div className="d-flex justify-content-center">
+                <SubNavbar/>
+            </div>
             <div className="calendar-wrapper">
 
               <div className='dashboardRow'>
@@ -69,6 +76,7 @@ const Dashboard = () => {
     
     </>
   );
+
 };
 
 export default Dashboard;

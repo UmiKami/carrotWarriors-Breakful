@@ -1,21 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const dashboardSlice = createSlice({
-  name: "dashboard",
-  initialState: {
-    isDateTimeConfirmed: false,
-    isTypeDurationConfirmed: false,
-  },
-  reducers: {
-    setDateTimeConfirmed(state, action){
-        state.isDateTimeConfirmed = action.payload;
+    name: "dashboard",
+    initialState: {
+        isDateTimeConfirmed: false,
+        isTypeDurationConfirmed: false,
+        throwAlert: false,
     },
-    setTypeDurationConfirmed(state, action){
-        if(state.isDateTimeConfirmed){
-            state.isTypeDurationConfirmed = action.payload;
-        }
-    }
-  },
+    reducers: {
+        setDateTimeConfirmed(state, action) {
+            state.isDateTimeConfirmed = action.payload;
+        },
+        setTypeDurationConfirmed(state, action) {
+            if (state.isDateTimeConfirmed) {
+                state.isTypeDurationConfirmed = action.payload;
+            }
+        },
+        setThrowAlert(state, action) {
+			state.throwAlert = action.payload;
+        },
+    },
 });
 
 export const dashboardActions = dashboardSlice.actions;
