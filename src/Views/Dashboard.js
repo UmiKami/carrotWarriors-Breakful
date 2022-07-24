@@ -15,6 +15,8 @@ const Dashboard = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const isDateTimeConfirmed = useSelector(state=> state.dashboard.isDateTimeConfirmed);
   const isTypeDurationConfirmed = useSelector(state=>state.dashboard.isTypeDurationConfirmed);
+  //const totalHours = Array.from(Array(24).keys());
+  const totalHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
   const dispatch = useDispatch();
 
@@ -48,7 +50,10 @@ const Dashboard = () => {
                     <BreakReview/>
                   )
                 }
-                <EventCalendar/>
+
+                <div className="eventCal">
+                  {totalHours.map((hour) => <EventCalendar rowHour={hour}/>)}
+                </div>
               </div>
 
             </div>

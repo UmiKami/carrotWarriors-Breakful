@@ -12,7 +12,6 @@ const calendarSlice = createSlice({
     },
 
     setEvents(state, events) {
-      debugger;
       state.events = events
     }
   },
