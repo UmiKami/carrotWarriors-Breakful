@@ -4,22 +4,6 @@ import { useSelector } from "react-redux";
 const EventCalendar = (props) => {
   const events = useSelector(state => state.calendar.events)
 
-
-  /*
-    big picture: dado que, temos um array de eventos, itere em cada item e execute:
-    - pegue o start and end date do evento
-    - extrai a hora do start date
-    - constroi o ID que seria "hour-${hourStartDate}"
-    - procura no DOM a section associada a esse ID
-    - renderiza o component com o devido conteudo
-    <span className="eventCal__timeStamp-event">
-      <p className="eventCal__timeStamp-eventHeader">
-        summary
-      </p>
-      <p className="eventCal__timeStamp-eventTime">startTime - endTime</p>
-    </span>
-  */
-
   return (
     <>
       <section className="eventCal__timeStamp">
