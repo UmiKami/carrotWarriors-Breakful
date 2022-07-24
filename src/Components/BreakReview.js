@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { calendarActions } from "../store/calendar";
 import { dashboardActions } from "../store/dashboard";
 
 const BreakReview = () => {
@@ -17,8 +18,11 @@ const BreakReview = () => {
     }
 
     const createAnotherBreak = () => {
+        // reset everything
         dispatch(dashboardActions.setTypeDurationConfirmed(false))
         dispatch(dashboardActions.setDateTimeConfirmed(false))
+        dispatch(calendarActions.setSelectedDate({}))
+        dispatch(calendarActions.setSelectedTime(""))
     }
 
     return (
