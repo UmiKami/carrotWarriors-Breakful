@@ -1,115 +1,40 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const EventCalendar = () => {
+const EventCalendar = (props) => {
+  const events = useSelector(state => state.calendar.events)
+
   return (
-    <div className="eventCal">
+    <>
       <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">1 AM</span>
+        <span className="eventCal__timeStamp-timeString">{props.rowHour}h</span>
         <span className="eventCal__timeStamp-timeOutline"></span>
-        <span className="eventCal__timeStamp-event">
-          <p className="eventCal__timeStamp-eventHeader">
-            Group Sprint Daily Meeting
-          </p>
-          <p className="eventCal__timeStamp-eventTime">1:00 am - 2:00 am</p>
-        </span>
+        {(() => {
+          let eventsAtThisHour = []
+
+          if(events.payload === undefined) {
+            return;
+          }
+
+          for (const event of events.payload) {
+            const eventStartHour = new Date(event.start.dateTime).getHours();
+
+            if(eventStartHour === props.rowHour) {
+                eventsAtThisHour.push(
+                <span className="eventCal__timeStamp-event">
+                  <p className="eventCal__timeStamp-eventHeader">
+                    {event.summary}
+                  </p>
+                  <p className="eventCal__timeStamp-eventTime">{new Date(event.start.dateTime).toLocaleString('en-US', { hour: 'numeric', hour12: true })} - {new Date(event.end.dateTime).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</p>
+                </span>
+              )
+            }
+          }
+          
+          return eventsAtThisHour;
+        })()}
       </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">2 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">3 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">4 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">5 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">6 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">7 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">8 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-        <span className="eventCal__timeStamp-event">
-          <p className="eventCal__timeStamp-eventHeader">Physics Class</p>
-          <p className="eventCal__timeStamp-eventTime">8:00 am - 9:00 am</p>
-        </span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">9 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">10 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">11 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">12 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">1 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">2 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">3 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">4 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">5 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">6 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">7 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">8 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">9 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">10 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">11 PM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-      <section className="eventCal__timeStamp">
-        <span className="eventCal__timeStamp-timeString">12 AM</span>
-        <span className="eventCal__timeStamp-timeOutline"></span>
-      </section>
-    </div>
+    </>
   );
 };
 
