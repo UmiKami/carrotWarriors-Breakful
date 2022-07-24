@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { calendarActions } from "../store/calendar";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
-import { createMuiTheme } from "@material-ui/core";
+import { createTheme } from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles"
 import DateFnsUtils from "@date-io/date-fns";
 
-const calendarTheme = createMuiTheme({
+const calendarTheme = createTheme({
     overrides: {
         MuiPickersDay: {
             day: {
@@ -33,21 +33,22 @@ const MonthCalendar = () => {
     dispatch(calendarActions.setSelectedDate(calendarVal))
 
     useEffect(() => {
-        listEvents();
+        listEvents(new Date());
     })
 
-    const handleDateChange = (date) => {
-        console.log(date);
-    }
+    const handleDateChange = (date) => listEvents(date);
 
-    const listEvents = () => requestGoogleCalendarApi('/calendars/primary/events',
-    {
-        maxResults: 20,
-        orderBy: 'startTime',
-        showDeleted: false,
-        timeMin: new Date().toISOString(),
-        singleEvents: true //to expand recurrent events
-    });
+    const listEvents = (date) => {
+        requestGoogleCalendarApi('/calendars/primary/events',
+        {
+            maxResults: 50,
+            orderBy: 'startTime',
+            showDeleted: false,
+            timeMin: new Date(date.setHours(0, 0, 0, 0)).toISOString(),
+            timeMax: new Date(date.setHours(23,59,59,999)).toISOString(),
+            singleEvents: true //to expand recurrent events
+        });
+    }
 
     //transform an Object in a URL query string. ?key=value&key2=value2
     const objectToQueryString = (obj) => {
@@ -72,12 +73,15 @@ const MonthCalendar = () => {
         }
     
         const fullUrl = `${googleCalendarEndpoint}${url}`
-    
+        
         fetch(fullUrl, {
             headers: buildAuthorizationHeaders()
         })
         .then(response => response.json())
-        .then(json => console.log(json));
+        .then(json => {
+            dispatch(calendarActions.setEvents(json.items));
+            console.log(json)
+        });
     }
 
     return (

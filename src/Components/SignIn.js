@@ -11,7 +11,7 @@ function SignIn() {
   useEffect(() => {
     saveAccessToken();
 
-    if(localStorage.getItem('access_token') != undefined) {
+    if(localStorage.getItem('access_token') !== undefined && localStorage.getItem('access_token') !== null) {
       navigate('/dashboard')
     }
   });

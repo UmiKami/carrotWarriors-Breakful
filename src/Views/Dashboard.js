@@ -19,7 +19,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem('access_token') == undefined){
+    if (localStorage.getItem('access_token') === undefined || localStorage.getItem('access_token') === null) {
       dispatch(authActions.signOut())
     } else {
       dispatch(authActions.signIn())
