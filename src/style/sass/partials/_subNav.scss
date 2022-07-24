@@ -1,0 +1,34 @@
+.subNav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 78%;
+    gap: 0px 500px;
+
+    padding: 20px 0px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #CACACA;
+
+    h5{
+        color: $darkGreen;
+        font-size: 18px;
+    }
+}
+
+.eventCalendarNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+
+    &__navArrows{
+        width: 50px;
+        display: flex;
+        justify-content: space-between;
+        color: black;
+
+        &-left, &-right{
+            cursor: pointer;
+        }
+    }
+}

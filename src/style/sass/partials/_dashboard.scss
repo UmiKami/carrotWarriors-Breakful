@@ -3,7 +3,14 @@
     justify-content: center;
 }
 
+// Style for MonthCalendar
+
 .MuiPickersBasePicker-container{
     border: 1px solid #436e707d;
     border-radius: 8px;
+}
+
+.MuiTypography-body1{
+    color: $darkGreen;
+    font-weight: 500 !important;
 }

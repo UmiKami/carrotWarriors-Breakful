@@ -1,5 +1,5 @@
 .breakRev {
-    width: 50rem;
+    width: 40rem;
     // background-color: rgba($color: #000000, $alpha: 0.1);
 
     display: flex;
@@ -13,7 +13,7 @@
         align-items: center;
         justify-content: space-around;
         height: 60%;
-        width: 75%;
+        width: 90%;
 
         &-header {
             font-weight: 500;
@@ -74,7 +74,7 @@
         &-returnBtn:hover,
         &-promptBtn:hover {
             transition: all 0.2s ease-out;
-            transform: translateY(-5px);
+            transform: translateY(-2px);
         }
     }
 
