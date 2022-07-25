@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { calendarActions } from "../store/calendar";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { createTheme } from "@material-ui/core";
