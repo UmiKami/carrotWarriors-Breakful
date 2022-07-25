@@ -27,7 +27,8 @@ function SignIn() {
 
     const params = {
       'client_id': clientID,
-      'redirect_uri': 'http://localhost:3000',
+      'redirect_uri': 'https://breakful.netlify.app/',
+      // 'redirect_uri': 'http://localhost:3000',
       'response_type': 'token',
       'scope': scope 
     };
