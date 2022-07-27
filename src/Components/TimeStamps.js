@@ -53,24 +53,12 @@ const TimeStamps = () => {
                   <button onClick={() => selectedTime("08:30")}>8:30 AM</button>
                   <button onClick={() => selectedTime("09:00")}>9:00 AM</button>
                   <button onClick={() => selectedTime("09:30")}>9:30 AM</button>
-                  <button onClick={() => selectedTime("10:00")}>
-                      10:00 AM
-                  </button>
-                  <button onClick={() => selectedTime("10:30")}>
-                      10:30 AM
-                  </button>
-                  <button onClick={() => selectedTime("11:00")}>
-                      11:00 AM
-                  </button>
-                  <button onClick={() => selectedTime("11:30")}>
-                      11:30 AM
-                  </button>
-                  <button onClick={() => selectedTime("12:00")}>
-                      12:00 PM
-                  </button>
-                  <button onClick={() => selectedTime("12:30")}>
-                      12:30 PM
-                  </button>
+                  <button onClick={() => selectedTime("10:00")}>10:00 AM</button>
+                  <button onClick={() => selectedTime("10:30")}>10:30 AM</button>
+                  <button onClick={() => selectedTime("11:00")}>11:00 AM</button>
+                  <button onClick={() => selectedTime("11:30")}>11:30 AM</button>
+                  <button onClick={() => selectedTime("12:00")}>12:00 PM</button>
+                  <button onClick={() => selectedTime("12:30")}>12:30 PM</button>
                   <button onClick={() => selectedTime("13:00")}>1:00 PM</button>
                   <button onClick={() => selectedTime("13:30")}>1:30 PM</button>
                   <button onClick={() => selectedTime("14:00")}>2:00 PM</button>
