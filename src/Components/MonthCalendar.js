@@ -34,13 +34,22 @@ const calendarTheme = createTheme({
 });
 
 const MonthCalendar = () => {
-    const [calendarVal] = useState({});
-    const [selectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const dispatch = useDispatch();
-    dispatch(calendarActions.setSelectedDate(calendarVal))
 
     useEffect(() => {
         listEvents(new Date());
+
+                dispatch(
+                    calendarActions.setSelectedDate({
+                        day: {
+                            date: selectedDate.getDate(),
+                            dayNum: selectedDate.getDay(),
+                        },
+                        month: selectedDate.getMonth(),
+                        year: selectedDate.getFullYear(),
+                    })
+                );
     })
 
     const handleDateChange = (date) => listEvents(date);
@@ -87,7 +96,7 @@ const MonthCalendar = () => {
         .then(response => response.json())
         .then(json => {
             dispatch(calendarActions.setEvents(json.items));
-            console.log(json)
+            console.log("API resp: ", json)
         });
     }
 
@@ -98,7 +107,7 @@ const MonthCalendar = () => {
                 <ThemeProvider theme={calendarTheme}>
                 <DatePicker 
                     value={selectedDate} 
-                    onChange={handleDateChange}
+                    onChange={setSelectedDate}
                     disablePast
                     variant="static" 
                     disableToolbar/>
