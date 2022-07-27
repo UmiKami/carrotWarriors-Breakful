@@ -7,7 +7,12 @@ const breakSlice = createSlice({
         breakDuration: "",
     },
     reducers: {
-        
+        setBreakType(state, {payload}){
+            state.breakType = payload;
+        },
+        setBreakDuration(state, {payload}){
+            state.breakDuration = payload;
+        },
     },
 });
 
