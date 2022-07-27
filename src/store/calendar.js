@@ -4,7 +4,7 @@ const calendarSlice = createSlice({
   name: "calendar",
   initialState: {
     selectedDate: {},
-    events: [],
+    events: {},
     selectedTime: ""
   },
   reducers: {
