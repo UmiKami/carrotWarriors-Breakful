@@ -58,7 +58,7 @@ const Dashboard = () => {
                 }
 
                 <div className="eventCal">
-                  {totalHours.map((hour) => <EventCalendar rowHour={hour}/>)}
+                  {totalHours.map((hour) => <EventCalendar rowHour={hour} />)}
                 </div>
               </div>
 
