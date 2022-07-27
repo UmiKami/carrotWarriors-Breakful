@@ -116,11 +116,11 @@ const TimeStamps = () => {
                           background: "transparent",
                           position: "absolute",
                           width: "435px",
-                          left: "-205px",
+                          left: "-150px",
                       }}
                       iconMapping={{
                         error: <ErrorOutline sx={{
-                          color: "#5E5E5E"
+                          color: "#5E5E5E" 
                         }}/>
                       }}
                   >
