@@ -23,11 +23,15 @@ const BreakReview = () => {
 
     const formattedTime = (time) => {
         // 10:05
-        const resultTime = parseInt(time.slice(0, 2)) >= 12
-            ? (parseInt(time.slice(0, 2)) - 12).toString() +
-              time.slice(-3) +
-              " PM"
-            : time + " AM";
+        const resultTime =
+            parseInt(time.slice(0, 2)) >= 12
+                ? (parseInt(time.slice(0, 2)) != 12
+                      ? parseInt(time.slice(0, 2)) - 12
+                      : parseInt(time.slice(0, 2))
+                  ).toString() +
+                  time.slice(-3) +
+                  " PM"
+                : time + " AM";
 
         return resultTime
     };
