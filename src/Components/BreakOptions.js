@@ -21,9 +21,12 @@ const BreakOptions = () => {
     const selectedTime = useSelector(state=>state.calendar.selectedTime)
     // converts 24 hour format to 12 hour format
     const formattedTime =
-        // 10:05 
+        // 10:05
         parseInt(selectedTime.slice(0, 2)) >= 12
-            ? (parseInt(selectedTime.slice(0, 2)) - 12).toString() +
+            ? (parseInt(selectedTime.slice(0, 2)) != 12
+                  ? parseInt(selectedTime.slice(0, 2)) - 12
+                  : parseInt(selectedTime.slice(0, 2))
+              ).toString() +
               selectedTime.slice(-3) +
               " PM"
             : selectedTime + " AM";
