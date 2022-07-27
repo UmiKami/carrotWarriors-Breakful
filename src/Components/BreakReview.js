@@ -1,29 +1,53 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../store/calendar";
 import { dashboardActions } from "../store/dashboard";
 
 const BreakReview = () => {
-    const breakType = "COFFEE BREAK";
-    const month = "June";
-    const day = 19;
-    const year = 2022;
-    const startingTime = "10";
-    const endTime = "10:05";
+    const calcEndTime = () => {
+        const duration = useSelector((state) => state.break.breakDuration);
+        let endTime = "";
+
+        if (parseInt(startTime.slice(-2)) == 30 && parseInt(duration.slice(0,2)) == 30){
+            endTime = (parseInt(startTime.slice(-2)) + 1).toString() + ": 00";
+        }else{
+             endTime = startTime.slice(0,2) + ":" + (parseInt(startTime.slice(-2)) + parseInt(duration.slice(0,2))).toString();
+        }
+
+        
+        return endTime;
+    };
+
+    const calendar = useSelector((state) => state.calendar.selectedDate);
+    const startTime = useSelector((state) => state.calendar.selectedTime);
+
+    const formattedTime = (time) => {
+        // 10:05
+        const resultTime = parseInt(time.slice(0, 2)) >= 12
+            ? (parseInt(time.slice(0, 2)) - 12).toString() +
+              time.slice(-3) +
+              " PM"
+            : time + " AM";
+
+        return resultTime
+    };
+
+    const breakType = useSelector((state) => state.break.breakType);
+    const month = calendar.month;
+    const day = calendar.day.date;
+    const year = calendar.year;
+    const startingTime = formattedTime(startTime);
+    const endTime = formattedTime(calcEndTime());
 
     const dispatch = useDispatch();
 
-    const morningOrAfternoon = () => {
-        return "AM"
-    }
-
     const createAnotherBreak = () => {
         // reset everything
-        dispatch(dashboardActions.setTypeDurationConfirmed(false))
-        dispatch(dashboardActions.setDateTimeConfirmed(false))
-        dispatch(calendarActions.setSelectedDate({}))
-        dispatch(calendarActions.setSelectedTime(""))
-    }
+        dispatch(dashboardActions.setTypeDurationConfirmed(false));
+        dispatch(dashboardActions.setDateTimeConfirmed(false));
+        dispatch(calendarActions.setSelectedDate({}));
+        dispatch(calendarActions.setSelectedTime(""));
+    };
 
     return (
         <section className="breakRev">
@@ -37,9 +61,7 @@ const BreakReview = () => {
                         at
                     </p>
                     <p className="breakRev__heroSection-specialHeader">
-                        {month} {day}, {year} {startingTime}
-                        {morningOrAfternoon()}-{endTime}
-                        {morningOrAfternoon()}
+                        {month} {day}, {year} {startingTime}-{endTime}
                     </p>
                 </div>
 
@@ -52,7 +74,10 @@ const BreakReview = () => {
                     <button className="btn breakRev__actionBtn-returnBtn">
                         Return
                     </button>
-                    <button className="btn breakRev__actionBtn-promptBtn" onClick={createAnotherBreak}>
+                    <button
+                        className="btn breakRev__actionBtn-promptBtn"
+                        onClick={createAnotherBreak}
+                    >
                         Add another break
                     </button>
                 </div>
@@ -75,6 +100,6 @@ const BreakReview = () => {
             </div>
         </section>
     );
-}
+};
 
 export default BreakReview;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { breakActions } from "../store/break";
 import { dashboardActions } from "../store/dashboard";
 
 const BreakOptions = () => {
@@ -11,12 +12,16 @@ const BreakOptions = () => {
     }
 
     const confirmBreak = () => {
+        // create event on google calendar
+
+
         dispatch(dashboardActions.setTypeDurationConfirmed(true))
     }
 
     const selectedTime = useSelector(state=>state.calendar.selectedTime)
     // converts 24 hour format to 12 hour format
     const formattedTime =
+        // 10:05 
         parseInt(selectedTime.slice(0, 2)) >= 12
             ? (parseInt(selectedTime.slice(0, 2)) - 12).toString() +
               selectedTime.slice(-3) +
@@ -24,7 +29,10 @@ const BreakOptions = () => {
             : selectedTime + " AM";
 
     const setType = (type) => {
-        
+        dispatch(breakActions.setBreakType(type))
+    }
+    const setTime = (time) => {
+        dispatch(breakActions.setBreakDuration(time))
     }
 
     return (
@@ -86,17 +94,17 @@ const BreakOptions = () => {
                         <h1 className="breakOpt__typeDuration-timeHeader">
                             How long would you like to take a break?
                         </h1>
-                        <button className="breakOpt__typeDuration-timeBtn">
-                            30 sec
-                        </button>
-                        <button className="breakOpt__typeDuration-timeBtn">
-                            2 mins
-                        </button>
-                        <button className="breakOpt__typeDuration-timeBtn">
+                        <button className="breakOpt__typeDuration-timeBtn" onClick={()=>setTime("5 mins")}>
                             5 mins
                         </button>
-                        <button className="breakOpt__typeDuration-timeBtn">
+                        <button className="breakOpt__typeDuration-timeBtn" onClick={()=>setTime("10 mins")}>
                             10 mins
+                        </button>
+                        <button className="breakOpt__typeDuration-timeBtn" onClick={()=>setTime("15 mins")}>
+                            15 mins
+                        </button>
+                        <button className="breakOpt__typeDuration-timeBtn" onClick={()=>setTime("30 mins")}>
+                            30 mins
                         </button>
                         <button className="breakOpt__typeDuration-timeBtn">
                             <span
