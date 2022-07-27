@@ -8,14 +8,37 @@ const BreakReview = () => {
         const duration = useSelector((state) => state.break.breakDuration);
         let endTime = "";
 
-        if (parseInt(startTime.slice(-2)) == 30 && parseInt(duration.slice(0,2)) == 30){
+        if (
+            parseInt(startTime.slice(-2)) == 30 &&
+            parseInt(duration.slice(0, 2)) == 30
+        ) {
             endTime = (parseInt(startTime.slice(-2)) + 1).toString() + ": 00";
-        }else{
-             endTime = startTime.slice(0,2) + ":" + (parseInt(startTime.slice(-2)) + parseInt(duration.slice(0,2))).toString();
+        } else {
+            endTime =
+                startTime.slice(0, 2) +
+                ":" +
+                (
+                    parseInt(startTime.slice(-2)) +
+                    parseInt(duration.slice(0, 2))
+                ).toString();
         }
 
-        
         return endTime;
+    };
+
+    const monthNames = {
+        0: "January",
+        1: "February",
+        2: "March",
+        3: "April",
+        4: "May",
+        5: "June",
+        6: "July",
+        7: "August",
+        8: "September",
+        9: "October",
+        10: "November",
+        11: "December",
     };
 
     const calendar = useSelector((state) => state.calendar.selectedDate);
@@ -33,11 +56,11 @@ const BreakReview = () => {
                   " PM"
                 : time + " AM";
 
-        return resultTime
+        return resultTime;
     };
 
     const breakType = useSelector((state) => state.break.breakType);
-    const month = calendar.month;
+    const month = monthNames[calendar.month];
     const day = calendar.day.date;
     const year = calendar.year;
     const startingTime = formattedTime(startTime);
@@ -60,7 +83,7 @@ const BreakReview = () => {
                     <p className="breakRev__heroSection-header">
                         Great! You are taking a{" "}
                         <span className="breakRev__heroSection-specialHeader">
-                            {breakType}
+                            {breakType.toUpperCase()} TIME
                         </span>{" "}
                         at
                     </p>
