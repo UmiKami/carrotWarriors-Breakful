@@ -9,6 +9,7 @@ const TimeStamps = () => {
   const dateSelected = useSelector(state => state.calendar.selectedDate)
   const isDateSelected = Object.keys(dateSelected).length > 0;
 
+  console.log(isDateSelected);
   const confirmDateTime = () => {
     if(isTimeSelected.length > 0 && isDateSelected){
       dispatch(dashboardActions.setThrowAlert(false))
