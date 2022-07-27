@@ -124,7 +124,7 @@ const TimeStamps = () => {
                         }}/>
                       }}
                   >
-                      You must choose a content and duration to continue
+                      You must choose a date and time to continue
                   </Alert>
               ) : (
                   <></>
