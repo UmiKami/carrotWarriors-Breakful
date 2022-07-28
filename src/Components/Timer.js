@@ -12,8 +12,8 @@ const Timer = () => {
     const [seconds, setSeconds] = useState(23);
 
     const fixRenderFormat = (time) => {
-        return time < 10 ? "0" + time : time
-    }
+        return time < 10 ? "0" + time : time;
+    };
 
     useEffect(() => {
         const timerInter = setInterval(() => {
@@ -21,7 +21,7 @@ const Timer = () => {
                 setSeconds((prevState) => prevState - 1);
             } else {
                 if (minutes == 0 && seconds == 0) {
-                    setHours((prevState) => prevState - 1)
+                    setHours((prevState) => prevState - 1);
                     // reset mins and secs to 59 since we are in a new hour
                     setMinutes(59);
                     setSeconds(59);
@@ -38,19 +38,7 @@ const Timer = () => {
     }, [seconds]);
 
     return (
-        <Container
-            style={{
-                position: "relative",
-                background: "white",
-                height: "383px",
-                width: "633px",
-                boxShadow: "0px 23px 30px rgba(0,0,0,0.25)",
-                zIndex: "1000",
-                display: "flex",
-                flexDirection: "column",
-            }}
-            className="timerCard"
-        >
+        <Container className="timerCard">
             <Row className="d-flex align-items-center">
                 <Col className="d-flex align-items-center">
                     <img
@@ -58,25 +46,17 @@ const Timer = () => {
                         alt="breakful icon"
                         width="80px"
                     />
-                    <p
-                        style={{
-                            fontSize: "28px",
-                            margin: "0",
-                            color: "#436E70",
-                            fontWeight: "medium",
-                        }}
-                    >
-                        Breakful
-                    </p>
+                    <p className="timerCard__header1">Breakful</p>
                 </Col>
                 <Col className="d-flex justify-content-end">
                     <FontAwesomeIcon
                         icon={faXmark}
                         style={{
                             color: "#436E70",
-                            fontSize: "24px",
+                            fontSize: "28px",
                             marginRight: "12px",
                         }}
+                        className="timerCard__awesomeBtn"
                     />
                 </Col>
             </Row>
@@ -117,13 +97,7 @@ const Timer = () => {
                 >
                     <Button
                         variant="outline-success"
-                        style={{
-                            fontWeight: "light",
-                            fontSize: "25px",
-                            width: "338px",
-                            color: "#436E70",
-                            borderColor: "#436E70",
-                        }}
+                        className="timerCard__skipBtn"
                     >
                         Skip this break
                     </Button>
@@ -133,7 +107,9 @@ const Timer = () => {
                             fontSize: "44px",
                             position: "absolute",
                             right: "-10px",
+                            color: "#436E70",
                         }}
+                        className="timerCard__awesomeBtn timerCard__awesomeBtn-wheel"
                     />
                 </Col>
                 <Col></Col>
