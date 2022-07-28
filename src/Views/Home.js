@@ -22,7 +22,7 @@ const Home = () => {
                             zIndex: "-9999",
                         }}
                     ></div>
-                    <img src={require("../assets/LPimage.png")} alt="Landing page image" width="552px" />
+                    <img src={require("../assets/LPimage.png")} alt="Close up of a girl taking a relaxing break." width="552px" />
                 </Col>
                 <Col>
                     {/* Use ternary operator to change to break timer if it is time to take a break */}
