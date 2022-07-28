@@ -1,9 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { calendarActions } from "../store/calendar";
 import { dashboardActions } from "../store/dashboard";
 
 const BreakReview = () => {
+    const navigate = useNavigate();
+
     const calcEndTime = () => {
         const duration = useSelector((state) => state.break.breakDuration);
         let endTime = "";
@@ -121,7 +124,7 @@ const BreakReview = () => {
                         we will notify you when to break~
                     </p>
                 </div>
-                <button className="btn breakRev__goHome-homeBtn">
+                <button className="btn breakRev__goHome-homeBtn" onClick={()=>navigate('/home')}>
                     Yes, I am done!
                 </button>
             </div>
