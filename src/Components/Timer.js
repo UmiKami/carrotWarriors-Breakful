@@ -14,7 +14,10 @@ const Timer = () => {
             }}
         >
             <Row>
-                <Col>1</Col>
+                <Col className="d-flex align-items-center">
+                    <img src={require("../assets/icon_1.png")} alt="breakful icon" width="80px"/>
+                    <p style={{fontSize: "28px", margin: "0"}}>Breakful</p>
+                </Col>
                 <Col>2</Col>
             </Row>
             <Row>

@@ -1,8 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Timer from "../Components/Timer";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+    const events = useSelector((state) => state.calendar.events);
+    console.log(events);
+
     return (
         <Container
             style={{ height: "100vh" }}
