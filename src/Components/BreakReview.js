@@ -9,22 +9,26 @@ const BreakReview = () => {
 
     const calcEndTime = () => {
         const duration = useSelector((state) => state.break.breakDuration);
+        let begMinutes = parseInt(startTime.slice(-2));
+        let durationMinutes = parseInt(duration.slice(0, 2));
+        let endMinutes = begMinutes + durationMinutes;
         let endTime = "";
 
         if (
             parseInt(startTime.slice(-2)) === 30 &&
             parseInt(duration.slice(0, 2)) === 30
         ) {
-            endTime = (parseInt(startTime.slice(-2)) + 1).toString() + ": 00";
+            endTime = (begMinutes + 1).toString() + ": 00";
         } else {
             endTime =
                 startTime.slice(0, 2) +
                 ":" +
-                (
-                    parseInt(startTime.slice(-2)) +
-                    parseInt(duration.slice(0, 2))
-                ).toString();
+                (duration >= 10 ? endMinutes : "0" + endMinutes);
         }
+
+        console.log("SelectedTime: ", startTime);
+        console.log("SlicedStartTime: ", startTime.slice(0, 2));
+        console.log("End time: ", endTime);
 
         return endTime;
     };
@@ -52,11 +56,11 @@ const BreakReview = () => {
         const resultTime =
             parseInt(time.slice(0, 2)) >= 12
                 ? (parseInt(time.slice(0, 2)) !== 12
-                    ? parseInt(time.slice(0, 2)) - 12
-                    : parseInt(time.slice(0, 2))
-                ).toString() +
-                time.slice(-3) +
-                " PM"
+                      ? parseInt(time.slice(0, 2)) - 12
+                      : parseInt(time.slice(0, 2))
+                  ).toString() +
+                  time.slice(-3) +
+                  " PM"
                 : time + " AM";
 
         return resultTime;
@@ -124,7 +128,10 @@ const BreakReview = () => {
                         we will notify you when to break~
                     </p>
                 </div>
-                <button className="btn breakRev__goHome-homeBtn" onClick={()=>navigate('/home')}>
+                <button
+                    className="btn breakRev__goHome-homeBtn"
+                    onClick={() => navigate("/home")}
+                >
                     Yes, I am done!
                 </button>
             </div>
