@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { breakActions } from "../store/break";
 import { dashboardActions } from "../store/dashboard";
-import { calendarActions } from "../store/calendar";
 
 const BreakOptions = () => {
     const dispatch = useDispatch("");
@@ -60,8 +59,8 @@ const BreakOptions = () => {
         let endTime = "";
 
         if (
-            parseInt(selectedTime.slice(-2)) == 30 &&
-            parseInt(duration.slice(0, 2)) == 30
+            parseInt(selectedTime.slice(-2)) === 30 &&
+            parseInt(duration.slice(0, 2)) === 30
         ) {
             endTime = (parseInt(selectedTime.slice(-2)) + 1).toString() + ": 00";
         } else {

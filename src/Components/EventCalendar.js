@@ -6,7 +6,7 @@ const EventCalendar = ({ rowHour }) => {
     const formattedTime =
         // 10:05
         rowHour >= 12
-            ? (rowHour != 12 ? rowHour - 12 : rowHour).toString() + " PM"
+            ? (rowHour !== 12 ? rowHour - 12 : rowHour).toString() + " PM"
             : rowHour.toString() + " AM";
     return (
         <>

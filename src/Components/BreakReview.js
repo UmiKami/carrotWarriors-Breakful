@@ -9,8 +9,8 @@ const BreakReview = () => {
         let endTime = "";
 
         if (
-            parseInt(startTime.slice(-2)) == 30 &&
-            parseInt(duration.slice(0, 2)) == 30
+            parseInt(startTime.slice(-2)) === 30 &&
+            parseInt(duration.slice(0, 2)) === 30
         ) {
             endTime = (parseInt(startTime.slice(-2)) + 1).toString() + ": 00";
         } else {
@@ -48,12 +48,12 @@ const BreakReview = () => {
         // 10:05
         const resultTime =
             parseInt(time.slice(0, 2)) >= 12
-                ? (parseInt(time.slice(0, 2)) != 12
-                      ? parseInt(time.slice(0, 2)) - 12
-                      : parseInt(time.slice(0, 2))
-                  ).toString() +
-                  time.slice(-3) +
-                  " PM"
+                ? (parseInt(time.slice(0, 2)) !== 12
+                    ? parseInt(time.slice(0, 2)) - 12
+                    : parseInt(time.slice(0, 2))
+                ).toString() +
+                time.slice(-3) +
+                " PM"
                 : time + " AM";
 
         return resultTime;
