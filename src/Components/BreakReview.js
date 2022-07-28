@@ -23,7 +23,7 @@ const BreakReview = () => {
             endTime =
                 startTime.slice(0, 2) +
                 ":" +
-                (duration >= 10 ? endMinutes : "0" + endMinutes);
+                (durationMinutes >= 10 ? endMinutes : "0" + endMinutes);
         }
 
         console.log("SelectedTime: ", startTime);
@@ -105,8 +105,8 @@ const BreakReview = () => {
                     className="breakRev__heroSection-img"
                 />
                 <div className="breakRev__actionBtn">
-                    <button className="btn breakRev__actionBtn-returnBtn">
-                        Return
+                    <button className="btn breakRev__actionBtn-returnBtn" onClick={()=>navigate('/home')}>
+                        Go back to homepage
                     </button>
                     <button
                         className="btn breakRev__actionBtn-promptBtn"
@@ -115,25 +115,6 @@ const BreakReview = () => {
                         Add another break
                     </button>
                 </div>
-            </div>
-            <div className="breakRev__goHome">
-                <div>
-                    <p className="breakRev__goHome-header">
-                        Done scheduling breaks?
-                    </p>
-                    <p className="breakRev__goHome-text">
-                        You could start working
-                    </p>
-                    <p className="breakRev__goHome-text">
-                        we will notify you when to break~
-                    </p>
-                </div>
-                <button
-                    className="btn breakRev__goHome-homeBtn"
-                    onClick={() => navigate("/home")}
-                >
-                    Yes, I am done!
-                </button>
             </div>
         </section>
     );
