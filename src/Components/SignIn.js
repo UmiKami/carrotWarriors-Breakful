@@ -2,6 +2,7 @@ import { authActions } from "../store/auth";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import googlelogo from "../assets/googlelogo.png"
 
 function SignIn() {
   const navigate = useNavigate();
@@ -27,8 +28,8 @@ function SignIn() {
 
     const params = {
       'client_id': clientID,
-      'redirect_uri': 'https://breakful.netlify.app/',
-      // 'redirect_uri': 'http://localhost:3000',
+      // 'redirect_uri': 'https://breakful.netlify.app/',
+      'redirect_uri': 'http://localhost:3000',
       'response_type': 'token',
       'scope': scope 
     };
@@ -67,9 +68,10 @@ function SignIn() {
   return (
     <div className="sign-in-container">
       {!isLoggedIn ? (
-        <button onClick={handleSignIn}>
-          Sign in with Google Account
-        </button>
+          <button className="login" img src={googlelogo} alt="Google logo" onClick={handleSignIn}>
+            Sign in with Google
+            {/* <img  src={googlelogo} alt="Google logo" /> */}
+          </button>
       ) : (
         ""
       )}
