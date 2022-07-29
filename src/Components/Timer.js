@@ -4,19 +4,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faGear } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { breakActions } from "../store/break";
 
-const Timer = () => {
+const Timer = ({ nextBreak }) => {
+    const dispatch = useDispatch()
+
+    let dateGoal;
+    let startDate;
+    const [hasExecute, setHasExecute] = useState(false);
+
+    const navigate = useNavigate();
     // use this states to update timer
-    const [hours, setHours] = useState(10);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(23);
+    const [hours, setHours] = useState();
+    const [minutes, setMinutes] = useState();
+    const [seconds, setSeconds] = useState();
 
     const fixRenderFormat = (time) => {
         return time < 10 ? "0" + time : time;
     };
 
+    if (nextBreak && !hasExecute) {
+        dateGoal = new Date(nextBreak);
+        startDate = new Date();
+        // getTime methodn returns differnce in milliseconds hence why we are converting to hours by / 3600000
+        let timeDifference = (dateGoal.getTime() - startDate.getTime()) / 3600000;
+        let hours = parseInt(timeDifference);
+        let minutes = parseInt(timeDifference * 60 - hours * 60)
+        let seconds = Math.round((timeDifference * 60 - hours * 60) % minutes * 60);
+
+        setHours(hours);
+        setMinutes(minutes);
+        setSeconds(seconds);
+        
+        //----- testing only ------
+        // setHours(0);
+        // setMinutes(0);
+        // setSeconds(10);
+        //----- testing only ------
+        setHasExecute(true);
+    }
+
     useEffect(() => {
         const timerInter = setInterval(() => {
+            if (seconds == 0 && minutes == 0 && hours == 0) {
+                dispatch(breakActions.setIsBreakTime(true))
+                return;
+            }
+
             if (seconds > 0) {
                 setSeconds((prevState) => prevState - 1);
             } else {
@@ -32,10 +68,13 @@ const Timer = () => {
                 }
             }
         }, 1000);
-
         // clears interval to prevent it from acting irratically
         return () => clearInterval(timerInter);
-    }, [seconds]);
+    }, [seconds, minutes, hours]);
+
+    const skipEvent = () => {
+
+    }
 
     return (
         <Container className="timerCard">
@@ -48,17 +87,7 @@ const Timer = () => {
                     />
                     <p className="timerCard__header1">Breakful</p>
                 </Col>
-                <Col className="d-flex justify-content-end">
-                    <FontAwesomeIcon
-                        icon={faXmark}
-                        style={{
-                            color: "#436E70",
-                            fontSize: "28px",
-                            marginRight: "12px",
-                        }}
-                        className="timerCard__awesomeBtn"
-                    />
-                </Col>
+                <Col className="d-flex justify-content-end"></Col>
             </Row>
             <Row className="d-flex justify-content-center ">
                 <Col xs={11} className="px-0">
@@ -98,6 +127,7 @@ const Timer = () => {
                     <Button
                         variant="outline-success"
                         className="timerCard__skipBtn"
+                        onClick={()=>skipEvent()}
                     >
                         Skip this break
                     </Button>
@@ -110,6 +140,7 @@ const Timer = () => {
                             color: "#436E70",
                         }}
                         className="timerCard__awesomeBtn timerCard__awesomeBtn-wheel"
+                        onClick={() => navigate("/dashboard")}
                     />
                 </Col>
                 <Col></Col>
