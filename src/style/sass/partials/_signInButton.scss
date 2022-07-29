@@ -1,8 +1,7 @@
 button.login {
     display: inline-block;
     background: white;
-    color: #444;
-    width: 190px;
+    color: #212529;
     border-radius: 5px;
     border: thin solid $darkGreen;
     box-shadow: 1px 1px 1px $mediumGreen;
@@ -10,11 +9,15 @@ button.login {
     width: auto;
     height: auto;
     &:hover,
+    &:active,
     &:focus {
         cursor: pointer;
         color: $darkGreen;
         font-weight: 600;
-        }
+        box-shadow: 0 2px $darkGreen;
+        transform: translateY(4px);
+    }
+
     img {
         background-color: transparent;
         display: inline-block;
@@ -22,6 +25,6 @@ button.login {
         width: 20px;
         height: 20px;
         margin-right: 10px;
-        margin-left: 3px;
+        margin-left: 2px;
     }
 }

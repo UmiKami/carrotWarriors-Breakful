@@ -20,7 +20,7 @@ const Timer = () => {
             if (seconds > 0) {
                 setSeconds((prevState) => prevState - 1);
             } else {
-                if (minutes == 0 && seconds == 0) {
+                if (minutes === 0 && seconds === 0) {
                     setHours((prevState) => prevState - 1);
                     // reset mins and secs to 59 since we are in a new hour
                     setMinutes(59);
