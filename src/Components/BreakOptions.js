@@ -29,7 +29,7 @@ const BreakOptions = () => {
                 dateTime: `${startDate}T${calcEndTime()}:00`,
                 timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
             },
-            summary: breakType
+            summary: "Breakful: " + breakType
 
         });
     }
