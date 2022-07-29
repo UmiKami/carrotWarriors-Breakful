@@ -5,6 +5,7 @@ const breakSlice = createSlice({
     initialState: {
         breakType: "",
         breakDuration: "",
+        isBreakTime: false,
     },
     reducers: {
         setBreakType(state, {payload}){
@@ -13,6 +14,9 @@ const breakSlice = createSlice({
         setBreakDuration(state, {payload}){
             state.breakDuration = payload;
         },
+        setIsBreakTime(state, {payload}){
+            state.isBreakTime = payload;
+        }
     },
 });
 
