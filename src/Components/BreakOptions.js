@@ -179,7 +179,7 @@ const BreakOptions = () => {
                             <span
                                 contentEditable
                                 className="breakOpt__typeDuration-customTime"
-                            ></span>{" "}
+                            >_</span>{" "}
                             mins
                         </button>
                     </div>
