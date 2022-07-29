@@ -18,7 +18,7 @@ const BreakReview = () => {
             parseInt(startTime.slice(-2)) === 30 &&
             parseInt(duration.slice(0, 2)) === 30
         ) {
-            endTime = (begMinutes + 1).toString() + ": 00";
+            endTime = (parseInt(startTime.slice(0,2)) + 1).toString() + ": 00";
         } else {
             endTime =
                 startTime.slice(0, 2) +
