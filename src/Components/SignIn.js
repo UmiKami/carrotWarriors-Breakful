@@ -2,7 +2,7 @@ import { authActions } from "../store/auth";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import googlelogo from "../assets/googlelogo.png"
+import google from "../assets/google.png"
 
 function SignIn() {
   const navigate = useNavigate();
@@ -68,9 +68,9 @@ function SignIn() {
   return (
     <div className="sign-in-container">
       {!isLoggedIn ? (
-          <button className="login" img src={googlelogo} alt="Google logo" onClick={handleSignIn}>
-            Sign in with Google
-            {/* <img  src={googlelogo} alt="Google logo" /> */}
+          <button className="login" onClick={handleSignIn}>
+            <img  src={google} alt="Google logo" />
+            Sign in with Google 
           </button>
       ) : (
         ""
