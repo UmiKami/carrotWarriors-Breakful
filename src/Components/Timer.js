@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faGear } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -48,7 +48,7 @@ const Timer = ({ nextBreak }) => {
 
     useEffect(() => {
         const timerInter = setInterval(() => {
-            if (seconds == 0 && minutes == 0 && hours == 0) {
+            if (seconds <= 0 && minutes <= 0 && hours <= 0) {
                 dispatch(breakActions.setIsBreakTime(true))
                 return;
             }
@@ -111,9 +111,7 @@ const Timer = ({ nextBreak }) => {
                                 letterSpacing: "3px",
                             }}
                         >
-                            {fixRenderFormat(hours)}h :{" "}
-                            {fixRenderFormat(minutes)}m :{" "}
-                            {fixRenderFormat(seconds)}s
+                           {nextBreak ? fixRenderFormat(hours)+"h"+": "+fixRenderFormat(minutes)+"m" + ": "+fixRenderFormat(seconds)+"s" : "No breaks so far!"}
                         </p>
                     </div>
                 </Col>
