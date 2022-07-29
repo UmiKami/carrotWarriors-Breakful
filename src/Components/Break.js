@@ -3,50 +3,53 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-const Break = () => {
-    // const
+const Break = ({duration}) => {
     const [hours, setHours] = useState();
-    const [minutes, setMinutes] = useState(5);
-    const [seconds, setSeconds] = useState(59);
+    const [minutes, setMinutes] = useState();
+    const [seconds, setSeconds] = useState();
 
-    useEffect(()=> {
-      const timerInter = setInterval(() => {
-          if (seconds <= 0 && minutes <= 0 && hours <= 0) {
-              return;
-          }
+    if(duration < 60){
+      setMinutes(duration)
+    }
 
-          if (seconds > 0) {
-              setSeconds((prevState) => prevState - 1);
-          } else {
-              if (minutes === 0 && seconds === 0) {
-                  setHours((prevState) => prevState - 1);
-                  // reset mins and secs to 59 since we are in a new hour
-                  setMinutes(59);
-                  setSeconds(59);
-              } else {
-                  // as long as minutes are not 0, if seconds reach 0 we reset seconds and subtract 1 from minutes
-                  setMinutes((prevState) => prevState - 1);
-                  setSeconds(59);
-              }
-          }
-      }, 1000);
-      // clears interval to prevent it from acting irratically
-      return () => clearInterval(timerInter);
-    }, [seconds, minutes, hours])
+    useEffect(() => {
+        const timerInter = setInterval(() => {
+            if (seconds <= 0 && minutes <= 0 && hours <= 0) {
+                return;
+            }
+
+            if (seconds > 0) {
+                setSeconds((prevState) => prevState - 1);
+            } else {
+                if (minutes === 0 && seconds === 0) {
+                    setHours((prevState) => prevState - 1);
+                    // reset mins and secs to 59 since we are in a new hour
+                    setMinutes(59);
+                    setSeconds(59);
+                } else {
+                    // as long as minutes are not 0, if seconds reach 0 we reset seconds and subtract 1 from minutes
+                    setMinutes((prevState) => prevState - 1);
+                    setSeconds(59);
+                }
+            }
+        }, 1000);
+        // clears interval to prevent it from acting irratically
+        return () => clearInterval(timerInter);
+    }, [seconds, minutes, hours]);
 
     return (
         <Container
             style={{
-                width: "650px",
-                height: "450px",
+                width: "700px",
+                height: "525px",
                 backgroundColor: "#629EA0",
-                position: "relative",
-                top: "-50px",
+                top: "-100px",
                 zIndex: "1000",
                 boxShadow: "0px 23px 30px rgba(0, 0, 0, 0.25)",
                 color: "white",
+                borderRadius: "15px"
             }}
-            className="d-flex flex-column justify-content-center gap-2"
+            className="d-flex flex-column justify-content-center gap-2 position-relative"
         >
             <Row
                 className="d-flex text-center"
@@ -68,10 +71,10 @@ const Break = () => {
                     </span>{" "}
                 </p>
             </Row>
-            <Row className="text-center mb-4">
-                <p>You still have</p>
-                <h3>
-                    0{hours}h : 0{minutes}m : {seconds}s
+            <Row className="text-center mb-5">
+                <p style={{fontSize: "24px", margin: 0}}>You still have</p>
+                <h3 style={{fontSize: "48px"}}>
+                    {hours}h : 0{minutes}m : {seconds}s
                 </h3>
             </Row>
             <Row className="d-flex justify-content-center align-items-center position-relative">
@@ -80,7 +83,7 @@ const Break = () => {
                         width: "198px",
                         backgroundColor: "white",
                         color: "#4D4D4D",
-                        border: "none"
+                        border: "none",
                     }}
                 >
                     End break
@@ -96,6 +99,11 @@ const Break = () => {
                     className="awesome-Btn-wheel-2"
                 />
             </Row>
+            <img
+                src={require("../assets/Fitz_Standing.png")}
+                alt="person stretching"
+                style={{ position: "absolute", width: "285px", right: "0", bottom: "55px" }}
+            />
         </Container>
     );
 };

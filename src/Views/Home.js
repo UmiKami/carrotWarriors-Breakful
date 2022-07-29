@@ -12,6 +12,8 @@ const Home = () => {
     const eventsStatus = useSelector((state) => state.google.status);
     let breakfulEvents = [];
     let nextBreakStartTime;
+    let nextBreakEndTime;
+    let duration;
     const today = new Date();
 
     if (eventsStatus == "success") {
@@ -19,7 +21,16 @@ const Home = () => {
             item.summary.includes("Breakful")
         );
 
-        nextBreakStartTime = breakfulEvents[0].start.dateTime;
+        if(breakfulEvents.length != 0){
+            nextBreakStartTime = breakfulEvents[0].start.dateTime;
+            nextBreakEndTime = breakfulEvents[0].end.dateTime;
+
+
+            let endDate = new Date(nextBreakEndTime)
+            let begDate = new Date(nextBreakStartTime)
+            duration = (endDate - begDate) / 60000;
+        }
+
     }
 
     useEffect(() => {
@@ -37,7 +48,7 @@ const Home = () => {
             maxResults: 50,
             orderBy: "startTime",
             showDeleted: false,
-            timeMin: new Date(date.setHours(0, 0, 0, 0)).toISOString(),
+            timeMin: new Date().toISOString(),
             timeMax: new Date(date.setHours(23, 59, 59, 999)).toISOString(),
             singleEvents: true, //to expand recurrent events
         });
@@ -90,7 +101,7 @@ const Home = () => {
                 </Col>
                 <Col>
                     {/* Use ternary operator to change to break timer if it is time to take a break */}
-                   {!isBreakTime ? <Timer nextBreak={nextBreakStartTime}/> : <Break/>}
+                   {!isBreakTime ? <Timer nextBreak={nextBreakStartTime}/> : <Break duration={duration}/>}
                 </Col>
             </Row>
         </Container>
