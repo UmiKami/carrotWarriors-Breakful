@@ -23,11 +23,12 @@ const BreakReview = () => {
             endTime =
                 startTime.slice(0, 2) +
                 ":" +
-                (durationMinutes >= 10 ? endMinutes : "0" + endMinutes);
+                (endMinutes >= 10 ? endMinutes : "0" + endMinutes);
         }
 
         console.log("SelectedTime: ", startTime);
         console.log("SlicedStartTime: ", startTime.slice(0, 2));
+        console.log("Duration minutes", durationMinutes);
         console.log("End time: ", endTime);
 
         return endTime;
