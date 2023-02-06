@@ -1,18 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-import Layout from "./layout";
-import store from "./store/store";
+import express from "express"
+import todosRouter from "./routes/todo.js"
+import greetingsRouter from "./routes/greeetings.js"
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Layout />
-    </Provider>
-  </React.StrictMode>
-);
+const app = express();
+const PORT = 3001;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// app.use allows us to use a middleware | allows server to interpret json
+app.use(express.json());
+// for Form URL-encoded 
+app.use(express.urlencoded({extended: true}));
+
+app.use((req, res, next) => {
+    console.log(`${req.method}: ${req.route}`);
+    next();
+});
+
+app.use("/api/todos", todosRouter)
+app.use("/api/greetings", greetingsRouter)
+
+// tells the express app on which port to run
+app.listen(PORT, ()=> console.log(`Express server running on port ${PORT}!`));
+
+app.get("/", (req, res)=>{
+    res.send("<h1><span style='color: red;'>Congrats!</span> You have connected with this wonderful API!</h1>");
+})
+
+
